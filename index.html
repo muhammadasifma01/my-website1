@@ -6,12 +6,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 <style>
-*{box-sizing:border-box}
-body{margin:0;font-family:system-ui,-apple-system,Arial;background:#f4f6f8;line-height:1.6;font-size:16px;}
-header{background:#902424;color:#fff;padding:15px;}
-header h1{text-align:center;margin:0;font-size:22px;}
+/* BASIC STYLING */
+*{box-sizing:border-box;}
+body{margin:0;font-family:system-ui,-apple-system,Arial;background:#f4f6f8;color:#000;line-height:1.6;font-size:16px;transition:all .3s;}
+header{background:#902424;color:#fff;padding:15px;display:flex;flex-direction:column;align-items:center;}
+header h1{margin:0;font-size:22px;text-align:center;}
 nav{display:flex;flex-wrap:wrap;justify-content:center;margin-top:10px;}
-nav a{color:#fff;text-decoration:none;font-weight:bold;padding:8px 12px;font-size:15px;}
+nav a{color:#fff;text-decoration:none;font-weight:bold;padding:8px 12px;font-size:15px;cursor:pointer;}
 section{padding:40px 16px;display:block;}
 h2{text-align:center;margin-bottom:20px;}
 .hero{background:linear-gradient(120deg,#ff9800,#ff5722);color:#fff;text-align:center;padding:50px 16px;}
@@ -31,79 +32,110 @@ footer{background:#111;color:#fff;text-align:center;padding:16px;font-size:14px;
 
 /* FLOATING BUTTONS */
 .float-btns{position:fixed;bottom:20px;right:20px;display:flex;flex-direction:column;gap:12px;z-index:1000;}
-.float-btns a{background:#ff5722;color:#fff;width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;text-decoration:none;box-shadow:0 4px 12px rgba(0,0,0,0.3);}
+.float-btns a{background:#ff5722;color:#fff;width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;text-decoration:none;box-shadow:0 4px 12px rgba(0,0,0,.3);}
 .float-btns a:hover{background:#e64a19;}
+
+/* DARK MODE */
+body.dark{background:#121212;color:#ddd;}
+body.dark .card{background:#1f1f1f;box-shadow:0 8px 18px rgba(255,255,255,.05);}
+body.dark #contact a{color:#fff;}
+body.dark nav a{color:#fff;}
+body.dark footer{background:#000;color:#ccc;}
+body.dark .hero{background:linear-gradient(120deg,#333,#555);}
 </style>
 </head>
 <body>
 
 <header>
-<h1>KPKShopShoaib</h1>
+<h1 id="site-title">KPKShopShoaib</h1>
 <nav>
-<a href="#home">Home</a>
-<a href="#shop">Shop</a>
-<a href="#categories">Categories</a>
-<a href="#offers">Offers</a>
-<a href="#about">About</a>
-<a href="#contact">Contact</a>
+<a onclick="scrollToSection('home')">Home</a>
+<a onclick="scrollToSection('shop')">Shop</a>
+<a onclick="scrollToSection('categories')">Categories</a>
+<a onclick="scrollToSection('offers')">Offers</a>
+<a onclick="scrollToSection('about')">About</a>
+<a onclick="scrollToSection('contact')">Contact</a>
 </nav>
+<!-- TOGGLES -->
+<div style="margin-top:10px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+<button onclick="toggleDarkMode()">🌙 / ☀️ Mode</button>
+<button onclick="switchLanguage()">EN / UR</button>
+</div>
 </header>
 
 <section id="home" class="hero">
-<h2>Your Trusted Online Shopping Store</h2>
-<p>Quality products • Best prices • Fast delivery</p>
+<h2 data-en="Your Trusted Online Shopping Store" data-ur="آپ کا معتبر آن لائن شاپنگ اسٹور">Your Trusted Online Shopping Store</h2>
+<p data-en="Quality products • Best prices • Fast delivery" data-ur="معیاری مصنوعات • بہترین قیمتیں • تیز ترسیل">Quality products • Best prices • Fast delivery</p>
 </section>
 
 <section id="shop">
-<h2>Popular Products</h2>
+<h2 data-en="Popular Products" data-ur="مشہور مصنوعات">Popular Products</h2>
 <div class="cards">
-<div class="card"><i class="fa-solid fa-mobile"></i><h3>Smart Phones</h3><p>Latest models</p><button>View</button></div>
-<div class="card"><i class="fa-solid fa-shirt"></i><h3>Clothing</h3><p>Trendy fashion</p><button>View</button></div>
-<div class="card"><i class="fa-solid fa-laptop"></i><h3>Laptops</h3><p>High performance</p><button>View</button></div>
-<div class="card"><i class="fa-solid fa-headphones"></i><h3>Accessories</h3><p>Best quality</p><button>View</button></div>
+<div class="card"><i class="fa-solid fa-mobile"></i><h3 data-en="Smart Phones" data-ur="اسمارٹ فون">Smart Phones</h3><p data-en="Latest models" data-ur="تازہ ترین ماڈلز">Latest models</p><button data-en="View" data-ur="دیکھیں">View</button></div>
+<div class="card"><i class="fa-solid fa-shirt"></i><h3 data-en="Clothing" data-ur="کپڑے">Clothing</h3><p data-en="Trendy fashion" data-ur="جدید فیشن">Trendy fashion</p><button data-en="View" data-ur="دیکھیں">View</button></div>
+<div class="card"><i class="fa-solid fa-laptop"></i><h3 data-en="Laptops" data-ur="لیپ ٹاپ">Laptops</h3><p data-en="High performance" data-ur="اعلی کارکردگی">High performance</p><button data-en="View" data-ur="دیکھیں">View</button></div>
+<div class="card"><i class="fa-solid fa-headphones"></i><h3 data-en="Accessories" data-ur="لوازمات">Accessories</h3><p data-en="Best quality" data-ur="بہترین معیار">Best quality</p><button data-en="View" data-ur="دیکھیں">View</button></div>
 </div>
 </section>
 
 <section id="categories">
-<h2>Categories</h2>
+<h2 data-en="Categories" data-ur="اقسام">Categories</h2>
 <div class="cards">
-<div class="card"><i class="fa-solid fa-house"></i><p>Home Appliances</p></div>
-<div class="card"><i class="fa-solid fa-basket-shopping"></i><p>Daily Essentials</p></div>
-<div class="card"><i class="fa-solid fa-gamepad"></i><p>Gaming</p></div>
+<div class="card"><i class="fa-solid fa-house"></i><p data-en="Home Appliances" data-ur="ہوم اپلائنسز">Home Appliances</p></div>
+<div class="card"><i class="fa-solid fa-basket-shopping"></i><p data-en="Daily Essentials" data-ur="روزمرہ ضروریات">Daily Essentials</p></div>
+<div class="card"><i class="fa-solid fa-gamepad"></i><p data-en="Gaming" data-ur="گیمنگ">Gaming</p></div>
 </div>
 </section>
 
 <section id="offers">
-<h2>Special Offers</h2>
+<h2 data-en="Special Offers" data-ur="خصوصی پیشکشیں">Special Offers</h2>
 <div class="cards">
-<div class="card"><i class="fa-solid fa-tags"></i><p>Up to 50% OFF</p></div>
-<div class="card"><i class="fa-solid fa-truck-fast"></i><p>Free Delivery</p></div>
+<div class="card"><i class="fa-solid fa-tags"></i><p data-en="Up to 50% OFF" data-ur="50٪ تک رعایت">Up to 50% OFF</p></div>
+<div class="card"><i class="fa-solid fa-truck-fast"></i><p data-en="Free Delivery" data-ur="فری ڈیلیوری">Free Delivery</p></div>
 </div>
 </section>
 
 <section id="about">
-<h2>About KPKShopShoaib</h2>
-<p style="text-align:center;max-width:600px;margin:auto">
+<h2 data-en="About KPKShopShoaib" data-ur="کے بارے میں KPKShopShoaib">About KPKShopShoaib</h2>
+<p style="text-align:center;max-width:600px;margin:auto" data-en="KPKShopShoaib is a modern online shopping platform providing trusted products with professional service." data-ur="KPKShopShoaib ایک جدید آن لائن شاپنگ پلیٹ فارم ہے جو معتبر مصنوعات اور پیشہ ورانہ خدمات فراہم کرتا ہے۔">
 KPKShopShoaib is a modern online shopping platform providing trusted products with professional service.
 </p>
 </section>
 
+<!-- CONTACT SECTION -->
 <section id="contact">
-<h2>Contact Us</h2>
+<h2 data-en="Contact Us" data-ur="ہم سے رابطہ کریں">Contact Us</h2>
 <p><a href="mailto:shoibafridisa001@gmail.com"><i class="fa-solid fa-envelope"></i> shoibafridisa001@gmail.com</a></p>
 <p><a href="tel:+923195555490"><i class="fa-solid fa-phone"></i> +92 319 5555490</a></p>
-<p><a href="https://www.google.com/maps?q=KPKShopShoaib" target="_blank"><i class="fa-solid fa-location-dot"></i> View on Map</a></p>
+<p><a href="https://www.google.com/maps?q=Saddar+Bazar,+Gul+Hajji+Plaza,+KPK,+Pakistan" target="_blank"><i class="fa-solid fa-location-dot"></i> View on Map</a></p>
 <p><a href="https://wa.me/923195555490" target="_blank"><i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp</a></p>
 </section>
 
-<footer>© 2026 KPKShopShoaib | All Rights Reserved</footer>
-
-<!-- FLOATING ACTION BUTTONS FOR MOBILE -->
+<!-- FLOATING BUTTONS -->
 <div class="float-btns">
 <a href="tel:+923195555490" title="Call"><i class="fa-solid fa-phone"></i></a>
 <a href="https://wa.me/923195555490" target="_blank" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-<a href="https://www.google.com/maps?q=KPKShopShoaib" target="_blank" title="Location"><i class="fa-solid fa-location-dot"></i></a>
+<a href="https://www.google.com/maps?q=Saddar+Bazar,+Gul+Hajji+Plaza,+KPK,+Pakistan" target="_blank" title="Location"><i class="fa-solid fa-location-dot"></i></a>
 </div>
+
+<script>
+/* SCROLL TO SECTION */
+function scrollToSection(id){document.getElementById(id).scrollIntoView({behavior:'smooth'});}
+
+/* DARK MODE TOGGLE */
+function toggleDarkMode(){
+  document.body.classList.toggle('dark');
+}
+
+/* LANGUAGE SWITCH */
+let lang = 'en';
+function switchLanguage(){
+  lang = (lang==='en') ? 'ur' : 'en';
+  document.querySelectorAll('[data-en]').forEach(el=>{
+    el.textContent = el.getAttribute('data-'+lang);
+  });
+}
+</script>
 
 </body>
 </html>
