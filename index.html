@@ -1,53 +1,93 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8"><title>KPKShopShoaib</title><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"><style>
-body{margin:0;font-family:Arial;background:#f4f6f8}header{background:#111;color:#fff;padding:15px 30px;display:flex;justify-content:space-between;align-items:center}
-nav a{color:#fff;margin:0 10px;text-decoration:none;font-weight:bold;cursor:pointer}
-section{display:none;padding:60px 30px}h1,h2{text-align:center}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>KPKShopShoaib</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+<style>
+body{margin:0;font-family:Arial;background:#f4f6f8}
+header{background:#111;color:#fff;padding:15px 30px;display:flex;justify-content:space-between;align-items:center}
+header h1{margin:0}
+nav a{color:#fff;margin:0 12px;text-decoration:none;font-weight:bold}
+section{padding:60px 30px}
+.hero{background:linear-gradient(120deg,#ff9800,#ff5722);color:#fff;text-align:center}
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
-.card{background:#fff;padding:20px;border-radius:12px;box-shadow:0 10px 20px rgba(0,0,0,.1);text-align:center;cursor:pointer;transition:.3s}
-.card:hover{transform:scale(1.05)}.card i{font-size:40px;color:#ff5722}
-.hero{background:linear-gradient(120deg,#ff9800,#ff5722);color:#fff}
-button{background:#ff5722;color:#fff;border:none;padding:10px 18px;border-radius:20px;cursor:pointer}
+.card{background:#fff;padding:20px;border-radius:12px;box-shadow:0 10px 20px rgba(0,0,0,.1);text-align:center}
+.card i{font-size:40px;color:#ff5722;margin-bottom:10px}
 footer{background:#111;color:#fff;text-align:center;padding:20px}
-</style></head>
+
+html { scroll-behavior: smooth; }
+.card { cursor: pointer; transition: transform .3s; }
+.card:hover { transform: scale(1.05); }
+button {
+  background:#ff5722;color:#fff;border:none;
+  padding:10px 18px;border-radius:20px;
+  cursor:pointer;font-weight:bold
+}
+</style>
+</head>
 
 <body>
-<header><h2>KPKShopShoaib</h2>
+
+<header>
+<h1>KPKShopShoaib</h1>
 <nav>
-<a onclick="show('home')">Home</a>
-<a onclick="show('shop')">Shop</a>
-<a onclick="show('categories')">Categories</a>
-<a onclick="show('offers')">Offers</a>
-<a onclick="show('about')">About</a>
-<a onclick="show('contact')">Contact</a>
-</nav></header>
+<a href="#home">Home</a>
+<a href="#shop">Shop</a>
+<a href="#categories">Categories</a>
+<a href="#offers">Offers</a>
+<a href="#about">About</a>
+<a href="#contact">Contact</a>
+</nav>
+</header>
 
-<section id="home" class="hero"><h1>Welcome to KPKShopShoaib</h1><p style="text-align:center">Your trusted online shopping store</p></section>
+<section id="home" class="hero">
+<h2>Your Trusted Online Shopping Store</h2>
+<p>Quality products • Best prices • Fast delivery</p>
+</section>
 
-<section id="shop"><h2>Products</h2><div class="cards">
-<div class="card" onclick="alert('Phone clicked')"><i class="fa fa-mobile"></i><h3>Smart Phones</h3><button>Buy</button></div>
-<div class="card" onclick="alert('Clothes clicked')"><i class="fa fa-shirt"></i><h3>Clothing</h3><button>Buy</button></div>
-<div class="card" onclick="alert('Laptop clicked')"><i class="fa fa-laptop"></i><h3>Laptops</h3><button>Buy</button></div>
-</div></section>
+<section id="shop">
+<h2>Popular Products</h2>
+<div class="cards">
+<div class="card"><i class="fa-solid fa-mobile"></i><h3>Smart Phones</h3><p>Latest models</p></div>
+<div class="card"><i class="fa-solid fa-shirt"></i><h3>Clothing</h3><p>Trendy fashion</p></div>
+<div class="card"><i class="fa-solid fa-laptop"></i><h3>Laptops</h3><p>High performance</p></div>
+<div class="card"><i class="fa-solid fa-headphones"></i><h3>Accessories</h3><p>Best quality</p></div>
+</div>
+</section>
 
-<section id="categories"><h2>Categories</h2><div class="cards">
-<div class="card"><i class="fa fa-house"></i><p>Home</p></div>
-<div class="card"><i class="fa fa-gamepad"></i><p>Gaming</p></div>
-<div class="card"><i class="fa fa-basket-shopping"></i><p>Essentials</p></div>
-</div></section>
+<section id="categories">
+<h2>Categories</h2>
+<div class="cards">
+<div class="card"><i class="fa-solid fa-house"></i><p>Home Appliances</p></div>
+<div class="card"><i class="fa-solid fa-basket-shopping"></i><p>Daily Essentials</p></div>
+<div class="card"><i class="fa-solid fa-gamepad"></i><p>Gaming</p></div>
+</div>
+</section>
 
-<section id="offers"><h2>Offers</h2><div class="cards">
-<div class="card"><i class="fa fa-tags"></i><p>Up to 50% OFF</p></div>
-<div class="card"><i class="fa fa-truck-fast"></i><p>Free Delivery</p></div>
-</div></section>
+<section id="offers">
+<h2>Special Offers</h2>
+<div class="cards">
+<div class="card"><i class="fa-solid fa-tags"></i><p>Up to 50% OFF</p></div>
+<div class="card"><i class="fa-solid fa-truck-fast"></i><p>Free Delivery</p></div>
+</div>
+</section>
 
-<section id="about"><h2>About Us</h2><p style="text-align:center">KPKShopShoaib is a professional online shopping platform.</p></section>
+<section id="about">
+<h2>About KPKShopShoaib</h2>
+<p>KPKShopShoaib is a modern online shopping platform providing trusted products with professional service.</p>
+</section>
 
-<section id="contact"><h2>Contact</h2><p style="text-align:center"><i class="fa fa-envelope"></i> support@kpkshopshoaib.com</p></section>
+<section id="contact">
+<h2>Contact Us</h2>
+<p><i class="fa-solid fa-envelope"></i> support@kpkshopshoaib.com</p>
+<p><i class="fa-solid fa-phone"></i> +49 000 000000</p>
+</section>
 
-<footer>© 2026 KPKShopShoaib</footer>
+<footer>
+<p>© 2026 KPKShopShoaib | All Rights Reserved</p>
+</footer>
 
-<script>
-function show(id){document.querySelectorAll("section").forEach(s=>s.style.display="none");document.getElementById(id).style.display="block";}
-show("home");
-</script>
-</body></html>
+</body>
+</html>
